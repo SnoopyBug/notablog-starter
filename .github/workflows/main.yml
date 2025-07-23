@@ -24,12 +24,26 @@ jobs:
       # 1、生成静态文件
       - name: Build
         run: npm i -g notablog && notablog generate . && ls -ilsh ./
+        
       # 2、部署到 GitHub Pages
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
-          repository-name: SnoopyBug/SnoopyBug.github.io
-          BRANCH: master
-          FOLDER: public
-          # 注意这里的 public 是仓库根目录下的 public，也就是 npm run build 生成静态资源的路径，比如有的人是 `docs/.vuepress/dist`
+          # 关键修改：移除目标仓库名（除非部署到其他仓库）
+          # repository-name: SnoopyBug/SnoopyBug.github.io → 注释掉此行
+          branch: gh-pages  # 改用GitHub Pages标准分支
+          folder: public
+          clean: true      # 添加清除旧文件选项
+          clean-exclude: |
+            CNAME          # 保留自定义域名配置
+            .nojekyll      # 保留禁止Jekyll处理的标记
+      
+      # - name: Deploy
+      #   uses: JamesIves/github-pages-deploy-action@v4.2.5
+      #   with:
+      #     token: ${{ secrets.ACCESS_TOKEN }}
+      #     repository-name: SnoopyBug/SnoopyBug.github.io
+      #     BRANCH: master
+      #     FOLDER: public
+      #     # 注意这里的 public 是仓库根目录下的 public，也就是 npm run build 生成静态资源的路径，比如有的人是 `docs/.vuepress/dist`
