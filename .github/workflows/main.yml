@@ -30,8 +30,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
-          # 关键修改：移除目标仓库名（除非部署到其他仓库）
-          # repository-name: SnoopyBug/SnoopyBug.github.io → 注释掉此行
+          repository-name: SnoopyBug/SnoopyBug.github.io
           branch: gh-pages  # 改用GitHub Pages标准分支
           folder: public
           clean: true      # 添加清除旧文件选项
