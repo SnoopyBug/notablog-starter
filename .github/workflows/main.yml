@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4  # 升级到 v4
+        uses: actions/checkout@v2
 
       - name: Build
         run: |
@@ -19,47 +19,13 @@ jobs:
           ls -R public  # 验证输出
 
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4  # 使用 v4 的最新版本
+        uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           repository-name: SnoopyBug/SnoopyBug.github.io
-          branch: gh-pages
-          folder: public
-          # clean-exclude: ".git, .github, .ssh"  # 修正参数名为 clean-exclude
-
-
-
-
-
-
-# name: Github Pages
-
-# on:
-#   schedule:
-#     - cron: '0 2 * * *'
-#   workflow_dispatch:
-
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v2
-
-#       - name: Build
-#         run: |
-#           npm i -g notablog
-#           notablog generate .
-#           ls -R public  # 验证输出
-
-#       - name: Deploy
-#         uses: JamesIves/github-pages-deploy-action@v4.2.5
-#         with:
-#           token: ${{ secrets.ACCESS_TOKEN }}
-#           repository-name: SnoopyBug/SnoopyBug.github.io
-#           branch: gh-pages   # 小写，匹配日志行为
-#           folder: public     # 小写
-#           exclude: ".git, .github, .ssh"  # 显式设置，无注释！
+          branch: gh-pages   # 小写，匹配日志行为
+          folder: public     # 小写
+          exclude: ".git, .github, .ssh"  # 显式设置，无注释！
 
 
 
