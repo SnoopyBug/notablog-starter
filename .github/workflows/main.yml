@@ -25,7 +25,7 @@ jobs:
           repository-name: SnoopyBug/SnoopyBug.github.io
           branch: gh-pages
           folder: public
-          clean-exclude: ".git, .github, .ssh"  # 修正参数名为 clean-exclude
+          # clean-exclude: ".git, .github, .ssh"  # 修正参数名为 clean-exclude
 
 
 
