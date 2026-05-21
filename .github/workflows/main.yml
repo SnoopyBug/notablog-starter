@@ -25,7 +25,7 @@ jobs:
           repository-name: SnoopyBug/SnoopyBug.github.io
           branch: gh-pages   # 小写，匹配日志行为
           folder: public     # 小写
-          exclude-clean: ".git,.github,.ssh"  # 显式设置，无注释！
+          clean-exclude: ".git,.github,.ssh"  # 显式设置，无注释！
 
 
 
